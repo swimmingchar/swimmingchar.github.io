@@ -28,18 +28,111 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             background-color: var(--ufc-dark);
             color: var(--ufc-text);
             line-height: 1.6;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* ========== Full-Page Scroll ========== */
+        .fullpage-wrapper {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fullpage-container {
+            height: 100vh;
+            width: 100vw;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        .fullpage-slide {
+            height: 100vh;
+            width: 100vw;
+            overflow-y: auto;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.5);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .nav-dot:hover {
+            border-color: var(--ufc-red);
+            background: rgba(217, 0, 17, 0.3);
+        }
+
+        .nav-dot.active {
+            background: var(--ufc-red);
+            border-color: var(--ufc-red);
+            box-shadow: 0 0 10px rgba(217, 0, 17, 0.5);
+        }
+
+        /* Scroll indicator (down arrow) */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            color: rgba(255,255,255,0.4);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            color: var(--ufc-red);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
         }
 
         /* Header / Hero */
         .hero {
             position: relative;
             min-height: 100vh;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -192,6 +285,7 @@
             background: var(--ufc-gray);
             padding: 3rem 2rem;
             text-align: center;
+            width: 100%;
         }
 
         .section-title {
@@ -235,11 +329,13 @@
         .main-card-section {
             background: linear-gradient(180deg, var(--ufc-dark) 0%, var(--ufc-gray) 100%);
             padding: 4rem 2rem;
+            width: 100%;
         }
 
         .main-card-container {
             max-width: 1000px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .fight-card {
@@ -434,6 +530,7 @@
             background: var(--ufc-gray);
             padding: 4rem 2rem;
             text-align: center;
+            width: 100%;
         }
 
         .platforms-container {
@@ -482,6 +579,7 @@
             background: linear-gradient(180deg, var(--ufc-dark) 0%, #000 100%);
             padding: 4rem 2rem;
             text-align: center;
+            width: 100%;
         }
 
         .schedule-grid {
@@ -539,6 +637,7 @@
             background: var(--ufc-dark);
             padding: 4rem 2rem;
             text-align: center;
+            width: 100%;
         }
 
         .venue-name {
@@ -579,6 +678,7 @@
             padding: 2rem;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
         }
 
         .footer-text {
@@ -672,6 +772,7 @@
             padding: 4rem 2rem;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
         }
 
         .stats-container {
@@ -757,255 +858,545 @@
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <svg class="ufc-logo" viewBox="0 0 120 40" fill="currentColor">
-                <path d="M20 5h-8v30h8c8.8 0 16-7.2 16-16s-7.2-14-16-14zm0 24h-4V11h4c6.6 0 12 5.4 12 12s-5.4 12-12 12z"/>
-                <text x="45" y="28" font-family="Oswald" font-weight="700" font-size="24">UFC</text>
-            </svg>
-            
-            <div class="event-number">UFC 328</div>
-            
-            <h1 class="main-title">
-                <span class="chimaev">Chimaev</span>
-                <span class="vs">VS</span>
-                <span class="strickland">Strickland</span>
-            </h1>
-            
-            <div class="event-details">
-                <div class="detail-item">
-                    <span class="detail-label">Date</span>
-                    <span class="detail-value">May 9, 2026</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Location</span>
-                    <span class="detail-value">Newark, NJ</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Venue</span>
-                    <span class="detail-value">Prudential Center</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Main Event</span>
-                    <span class="detail-value">9 PM ET</span>
-                </div>
-            </div>
-            
-            <div class="cta-buttons">
-                <a href="#watch" class="btn btn-primary">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    Watch Live
-                </a>
-                <a href="#fight-card" class="btn btn-secondary">View Fight Card</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Countdown Section -->
-    <section class="countdown-section">
-        <h2 class="section-title">Event Starts In</h2>
-        <div class="countdown-container">
-            <div class="countdown-item">
-                <div class="countdown-number" id="days">00</div>
-                <div class="countdown-label">Days</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="hours">00</div>
-                <div class="countdown-label">Hours</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="minutes">00</div>
-                <div class="countdown-label">Minutes</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="seconds">00</div>
-                <div class="countdown-label">Seconds</div>
-            </div>
-        </div>
-    </section>
+    <!-- Navigation Dots -->
+    <nav class="nav-dots" id="navDots"></nav>
 
-    <!-- Main Event Card -->
-    <section class="main-card-section" id="fight-card">
-        <h2 class="section-title">Fight Card</h2>
-        <div class="main-card-container">
-            <div class="fight-card">
-                <!-- Main Event -->
-                <div class="main-event">
-                    <span class="fight-badge">Main Event - Middleweight Championship</span>
-                    <div class="fighters-container">
-                        <div class="fighter">
-                            <div class="fighter-name chimaev">Khamzat<br>Chimaev</div>
-                            <div class="fighter-record">15-0-0 (6 KO, 6 SUB)</div>
-                            <div class="fighter-country">
-                                <span>🇦🇪 UAE / Russia</span>
-                            </div>
-                        </div>
-                        <div class="vs-badge">VS</div>
-                        <div class="fighter">
-                            <div class="fighter-name strickland">Sean<br>Strickland</div>
-                            <div class="fighter-record">30-7-0 (12 KO, 4 SUB)</div>
-                            <div class="fighter-country">
-                                <span>🇺🇸 USA</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="fight-info">
-                        <div class="fight-info-item">
-                            <div class="fight-info-label">Weight Class</div>
-                            <div class="fight-info-value">Middleweight (185 lbs)</div>
-                        </div>
-                        <div class="fight-info-item">
-                            <div class="fight-info-label">Title</div>
-                            <div class="fight-info-value">UFC Middleweight Championship</div>
-                        </div>
-                        <div class="fight-info-item">
-                            <div class="fight-info-label">Rounds</div>
-                            <div class="fight-info-value">5 Rounds</div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Fullpage Wrapper -->
+    <div class="fullpage-wrapper">
+        <div class="fullpage-container" id="fullpageContainer">
 
-                <!-- Co-Main Event -->
-                <div class="co-main-event">
-                    <span class="fight-badge">Co-Main Event - Light Heavyweight</span>
-                    <div class="fight-row">
-                        <div class="fight-matchup">
-                            <div class="fighter-simple">Jan Blachowicz</div>
-                            <div>
-                                <span class="fight-type">Light Heavyweight</span>
-                                <span class="fight-divider"> vs </span>
-                            </div>
-                            <div class="fighter-simple">Bogdan Gusev</div>
+            <!-- Slide 1: Hero Section -->
+            <section class="fullpage-slide hero">
+                <div class="hero-content">
+                    <svg class="ufc-logo" viewBox="0 0 120 40" fill="currentColor">
+                        <path d="M20 5h-8v30h8c8.8 0 16-7.2 16-16s-7.2-14-16-14zm0 24h-4V11h4c6.6 0 12 5.4 12 12s-5.4 12-12 12z"/>
+                        <text x="45" y="28" font-family="Oswald" font-weight="700" font-size="24">UFC</text>
+                    </svg>
+                    
+                    <div class="event-number">UFC 328</div>
+                    
+                    <h1 class="main-title">
+                        <span class="chimaev">Chimaev</span>
+                        <span class="vs">VS</span>
+                        <span class="strickland">Strickland</span>
+                    </h1>
+                    
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Date</span>
+                            <span class="detail-value">May 9, 2026</span>
                         </div>
-                    </div>
-                    <p style="text-align: center; color: var(--ufc-text-secondary); margin-top: 0.5rem; font-size: 0.9rem;">Rematch from their first encounter</p>
-                </div>
-
-                <!-- Main Card -->
-                <div class="other-fights">
-                    <div class="fight-row">
-                        <div class="fight-number">5</div>
-                        <div class="fight-matchup">
-                            <div class="fighter-simple">Alexander Volkov</div>
-                            <div>
-                                <span class="fight-type">Heavyweight</span>
-                                <span class="fight-divider"> vs </span>
-                            </div>
-                            <div class="fighter-simple">Waldo Cortes-Acosta</div>
+                        <div class="detail-item">
+                            <span class="detail-label">Location</span>
+                            <span class="detail-value">Newark, NJ</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Venue</span>
+                            <span class="detail-value">Prudential Center</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Main Event</span>
+                            <span class="detail-value">9 PM ET</span>
                         </div>
                     </div>
                     
-                    <div class="fight-row">
-                        <div class="fight-number">4</div>
-                        <div class="fight-matchup">
-                            <div class="fighter-simple">Sean Brady</div>
-                            <div>
-                                <span class="fight-type">Welterweight</span>
-                                <span class="fight-divider"> vs </span>
-                            </div>
-                            <div class="fighter-simple">Joaquin Buckley</div>
-                        </div>
+                    <div class="cta-buttons">
+                        <a href="#watch" class="btn btn-primary">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            Watch Live
+                        </a>
+                        <a href="#fight-card" class="btn btn-secondary">View Fight Card</a>
                     </div>
+                </div>
+                <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
+            </section>
 
-                    <div class="fight-row">
-                        <div class="fight-number">3</div>
-                        <div class="fight-matchup">
-                            <div class="fighter-simple">Daniel Marcos</div>
-                            <div>
-                                <span class="fight-type">Bantamweight</span>
-                                <span class="fight-divider"> vs </span>
-                            </div>
-                            <div class="fighter-simple">Rayanne dos Santos</div>
-                        </div>
+            <!-- Slide 2: Countdown Section -->
+            <section class="fullpage-slide countdown-section">
+                <h2 class="section-title">Event Starts In</h2>
+                <div class="countdown-container">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">Days</div>
                     </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+                <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
+            </section>
 
-                    <div class="fight-row">
-                        <div class="fight-number">2</div>
-                        <div class="fight-matchup">
-                            <div class="fighter-simple">Mansoor Abdul Rashid</div>
-                            <div>
-                                <span class="fight-type">Featherweight</span>
-                                <span class="fight-divider"> vs </span>
+            <!-- Slide 3: Fight Card Section -->
+            <section class="fullpage-slide main-card-section" id="fight-card">
+                <h2 class="section-title">Fight Card</h2>
+                <div class="main-card-container" style="max-height: calc(100vh - 120px); overflow-y: auto;">
+                    <div class="fight-card">
+                        <!-- Main Event -->
+                        <div class="main-event">
+                            <span class="fight-badge">Main Event - Middleweight Championship</span>
+                            <div class="fighters-container">
+                                <div class="fighter">
+                                    <div class="fighter-name chimaev">Khamzat<br>Chimaev</div>
+                                    <div class="fighter-record">15-0-0 (6 KO, 6 SUB)</div>
+                                    <div class="fighter-country">
+                                        <span>🇦🇪 UAE / Russia</span>
+                                    </div>
+                                </div>
+                                <div class="vs-badge">VS</div>
+                                <div class="fighter">
+                                    <div class="fighter-name strickland">Sean<br>Strickland</div>
+                                    <div class="fighter-record">30-7-0 (12 KO, 4 SUB)</div>
+                                    <div class="fighter-country">
+                                        <span>🇺🇸 USA</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="fighter-simple">Connor Matthews</div>
+                            <div class="fight-info">
+                                <div class="fight-info-item">
+                                    <div class="fight-info-label">Weight Class</div>
+                                    <div class="fight-info-value">Middleweight (185 lbs)</div>
+                                </div>
+                                <div class="fight-info-item">
+                                    <div class="fight-info-label">Title</div>
+                                    <div class="fight-info-value">UFC Middleweight Championship</div>
+                                </div>
+                                <div class="fight-info-item">
+                                    <div class="fight-info-label">Rounds</div>
+                                    <div class="fight-info-value">5 Rounds</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Co-Main Event -->
+                        <div class="co-main-event">
+                            <span class="fight-badge">Co-Main Event - Light Heavyweight</span>
+                            <div class="fight-row">
+                                <div class="fight-matchup">
+                                    <div class="fighter-simple">Jan Blachowicz</div>
+                                    <div>
+                                        <span class="fight-type">Light Heavyweight</span>
+                                        <span class="fight-divider"> vs </span>
+                                    </div>
+                                    <div class="fighter-simple">Bogdan Gusev</div>
+                                </div>
+                            </div>
+                            <p style="text-align: center; color: var(--ufc-text-secondary); margin-top: 0.5rem; font-size: 0.9rem;">Rematch from their first encounter</p>
+                        </div>
+
+                        <!-- Main Card -->
+                        <div class="other-fights">
+                            <div class="fight-row">
+                                <div class="fight-number">5</div>
+                                <div class="fight-matchup">
+                                    <div class="fighter-simple">Alexander Volkov</div>
+                                    <div>
+                                        <span class="fight-type">Heavyweight</span>
+                                        <span class="fight-divider"> vs </span>
+                                    </div>
+                                    <div class="fighter-simple">Waldo Cortes-Acosta</div>
+                                </div>
+                            </div>
+                            
+                            <div class="fight-row">
+                                <div class="fight-number">4</div>
+                                <div class="fight-matchup">
+                                    <div class="fighter-simple">Sean Brady</div>
+                                    <div>
+                                        <span class="fight-type">Welterweight</span>
+                                        <span class="fight-divider"> vs </span>
+                                    </div>
+                                    <div class="fighter-simple">Joaquin Buckley</div>
+                                </div>
+                            </div>
+
+                            <div class="fight-row">
+                                <div class="fight-number">3</div>
+                                <div class="fight-matchup">
+                                    <div class="fighter-simple">Daniel Marcos</div>
+                                    <div>
+                                        <span class="fight-type">Bantamweight</span>
+                                        <span class="fight-divider"> vs </span>
+                                    </div>
+                                    <div class="fighter-simple">Rayanne dos Santos</div>
+                                </div>
+                            </div>
+
+                            <div class="fight-row">
+                                <div class="fight-number">2</div>
+                                <div class="fight-matchup">
+                                    <div class="fighter-simple">Mansoor Abdul Rashid</div>
+                                    <div>
+                                        <span class="fight-type">Featherweight</span>
+                                        <span class="fight-divider"> vs </span>
+                                    </div>
+                                    <div class="fighter-simple">Connor Matthews</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
+            </section>
 
-    <!-- Watch Section -->
-    <section class="watch-section" id="watch">
-        <h2 class="section-title">Where to Watch UFC 328</h2>
-        <div class="platforms-container">
-            <div class="platform-card">
-                <div class="platform-name">Paramount+</div>
-                <div class="platform-detail">Official US Broadcast Partner</div>
-                <div class="platform-price">Subscription Required</div>
-                <a href="https://www.paramountplus.com" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Watch Now</a>
-            </div>
-            <div class="platform-card">
-                <div class="platform-name">ESPN+ PPV</div>
-                <div class="platform-detail">Main Card & Prelims</div>
-                <div class="platform-price">Buy on ESPN+</div>
-                <a href="https://www.espn.com/plus" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Purchase</a>
-            </div>
-            <div class="platform-card">
-                <div class="platform-name">UFC FIGHT PASS</div>
-                <div class="platform-detail">Full Event & Replays</div>
-                <div class="platform-price">$9.99/month</div>
-                <a href="https://ufcfightpass.com" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Start Free Trial</a>
-            </div>
-        </div>
-    </section>
+            <!-- Slide 4: Watch Section -->
+            <section class="fullpage-slide watch-section" id="watch">
+                <h2 class="section-title">Where to Watch UFC 328</h2>
+                <div class="platforms-container">
+                    <div class="platform-card">
+                        <div class="platform-name">Paramount+</div>
+                        <div class="platform-detail">Official US Broadcast Partner</div>
+                        <div class="platform-price">Subscription Required</div>
+                        <a href="https://www.paramountplus.com" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Watch Now</a>
+                    </div>
+                    <div class="platform-card">
+                        <div class="platform-name">ESPN+ PPV</div>
+                        <div class="platform-detail">Main Card & Prelims</div>
+                        <div class="platform-price">Buy on ESPN+</div>
+                        <a href="https://www.espn.com/plus" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Purchase</a>
+                    </div>
+                    <div class="platform-card">
+                        <div class="platform-name">UFC FIGHT PASS</div>
+                        <div class="platform-detail">Full Event & Replays</div>
+                        <div class="platform-price">$9.99/month</div>
+                        <a href="https://ufcfightpass.com" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Start Free Trial</a>
+                    </div>
+                </div>
+                <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
+            </section>
 
-    <!-- Schedule Section -->
-    <section class="schedule-section">
-        <h2 class="section-title">Event Schedule (ET)</h2>
-        <div class="schedule-grid">
-            <div class="schedule-card early">
-                <div class="schedule-phase">Early Prelims</div>
-                <div class="schedule-time">5:00 PM</div>
-                <div class="schedule-timezone">Eastern Time / 2:00 PM PT</div>
-            </div>
-            <div class="schedule-card prelims">
-                <div class="schedule-phase">Preliminary Card</div>
-                <div class="schedule-time">7:00 PM</div>
-                <div class="schedule-timezone">Eastern Time / 4:00 PM PT</div>
-            </div>
-            <div class="schedule-card main">
-                <div class="schedule-phase">Main Card</div>
-                <div class="schedule-time">9:00 PM</div>
-                <div class="schedule-timezone">Eastern Time / 6:00 PM PT</div>
-            </div>
-        </div>
-    </section>
+            <!-- Slide 5: Schedule Section -->
+            <section class="fullpage-slide schedule-section">
+                <h2 class="section-title">Event Schedule (ET)</h2>
+                <div class="schedule-grid">
+                    <div class="schedule-card early">
+                        <div class="schedule-phase">Early Prelims</div>
+                        <div class="schedule-time">5:00 PM</div>
+                        <div class="schedule-timezone">Eastern Time / 2:00 PM PT</div>
+                    </div>
+                    <div class="schedule-card prelims">
+                        <div class="schedule-phase">Preliminary Card</div>
+                        <div class="schedule-time">7:00 PM</div>
+                        <div class="schedule-timezone">Eastern Time / 4:00 PM PT</div>
+                    </div>
+                    <div class="schedule-card main">
+                        <div class="schedule-phase">Main Card</div>
+                        <div class="schedule-time">9:00 PM</div>
+                        <div class="schedule-timezone">Eastern Time / 6:00 PM PT</div>
+                    </div>
+                </div>
+                <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
+            </section>
 
-    <!-- Location Section -->
-    <section class="location-section">
-        <h2 class="section-title">Event Location</h2>
-        <div class="venue-name">Prudential Center</div>
-        <div class="venue-address">25 Lafayette St, Newark, NJ 07102, USA</div>
-        <div class="venue-map">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.5!2d-74.1724!3d40.7357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzA2LjIiTiA3NMKwMTAnMTkuMiJX!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
+            <!-- Slide 6: Location Section -->
+            <section class="fullpage-slide location-section">
+                <h2 class="section-title">Event Location</h2>
+                <div class="venue-name">Prudential Center</div>
+                <div class="venue-address">25 Lafayette St, Newark, NJ 07102, USA</div>
+                <div class="venue-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.5!2d-74.1724!3d40.7357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzA2LjIiTiA3NMKwMTAnMTkuMiJX!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
+            </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p class="footer-text">UFC 328: Chimaev vs Strickland - May 9, 2026 | Prudential Center, Newark, NJ</p>
-        <div class="social-links">
-            <a href="https://www.ufc.com" target="_blank" class="social-link" title="UFC.com">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            </a>
-            <a href="https://twitter.com/ufc" target="_blank" class="social-link" title="Twitter/X">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://www.instagram.com
+            <!-- Slide 7: Footer -->
+            <section class="fullpage-slide footer">
+                <p class="footer-text">UFC 328: Chimaev vs Strickland - May 9, 2026 | Prudential Center, Newark, NJ</p>
+                <div class="social-links">
+                    <a href="https://www.ufc.com" target="_blank" class="social-link" title="UFC.com">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/ufc" target="_blank" class="social-link" title="Twitter/X">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/ufc" target="_blank" class="social-link" title="Instagram">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/ufc" target="_blank" class="social-link" title="YouTube">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+                <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
+            </section>
+
+            <!-- Slide 8: Stats Section -->
+            <section class="fullpage-slide stats-section">
+                <h2 class="section-title">Page Statistics</h2>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon">👁️</div>
+                        <div class="stat-label">Your Visits</div>
+                        <div class="stat-value" id="localVisits">0</div>
+                        <div class="stat-detail">Times you've viewed this page</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🌐</div>
+                        <div class="stat-label">Total Page Views</div>
+                        <div class="stat-value" id="totalViews">—</div>
+                        <div class="stat-detail">Global visitor count</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-label">Page Requests</div>
+                        <div class="stat-value" id="pageRequests">0</div>
+                        <div class="stat-detail">Requests loaded this session</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // Full-Page Scroll Navigation
+        // ============================================
+
+        (function() {
+            'use strict';
+
+            const container = document.getElementById('fullpageContainer');
+            const slides = container.querySelectorAll('.fullpage-slide');
+            const navDots = document.getElementById('navDots');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            let isAnimating = false;
+            let touchStartY = 0;
+            let touchEndY = 0;
+
+            // Create navigation dots
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                dot.addEventListener('click', function() {
+                    goToSlide(i);
+                });
+                navDots.appendChild(dot);
+            }
+
+            // Update active dot
+            function updateDots(index) {
+                document.querySelectorAll('.nav-dot').forEach(function(dot, i) {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+
+            // Go to a specific slide
+            function goToSlide(index) {
+                if (isAnimating || index === currentSlide || index < 0 || index >= totalSlides) return;
+                isAnimating = true;
+                currentSlide = index;
+                container.style.transform = 'translateY(-' + (index * 100) + 'vh)';
+                updateDots(index);
+                // Update URL hash
+                var slideId = slides[index].getAttribute('id');
+                if (slideId) {
+                    history.replaceState(null, null, '#' + slideId);
+                } else {
+                    history.replaceState(null, null, '#slide-' + (index + 1));
+                }
+                setTimeout(function() {
+                    isAnimating = false;
+                }, 750);
+            }
+
+            // Expose for scroll indicator onclick
+            window.fullpage = {
+                next: function() {
+                    if (currentSlide < totalSlides - 1) {
+                        goToSlide(currentSlide + 1);
+                    }
+                },
+                prev: function() {
+                    if (currentSlide > 0) {
+                        goToSlide(currentSlide - 1);
+                    }
+                },
+                goToSlide: goToSlide
+            };
+
+            // Mouse wheel event
+            function handleWheel(e) {
+                e.preventDefault();
+                if (isAnimating) return;
+                if (e.deltaY > 0) {
+                    window.fullpage.next();
+                } else if (e.deltaY < 0) {
+                    window.fullpage.prev();
+                }
+            }
+
+            container.addEventListener('wheel', handleWheel, { passive: false });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+                    e.preventDefault();
+                    window.fullpage.next();
+                } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                    e.preventDefault();
+                    window.fullpage.prev();
+                } else if (e.key === 'Home') {
+                    e.preventDefault();
+                    goToSlide(0);
+                } else if (e.key === 'End') {
+                    e.preventDefault();
+                    goToSlide(totalSlides - 1);
+                }
+            });
+
+            // Touch events for mobile
+            container.addEventListener('touchstart', function(e) {
+                touchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            container.addEventListener('touchend', function(e) {
+                touchEndY = e.changedTouches[0].screenY;
+                var diff = touchStartY - touchEndY;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        window.fullpage.next();
+                    } else {
+                        window.fullpage.prev();
+                    }
+                }
+            }, { passive: true });
+
+            // Handle hash on load
+            function handleHash() {
+                var hash = window.location.hash;
+                if (hash) {
+                    for (var i = 0; i < slides.length; i++) {
+                        if (slides[i].getAttribute('id') === hash.substring(1)) {
+                            goToSlide(i);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            window.addEventListener('load', handleHash);
+
+            // ============================================
+            // Request Statistics Module
+            // ============================================
+
+            // --- 1. Local Storage Visit Counter ---
+            const STORAGE_KEY = 'ufc328_visit_count';
+            let visitCount = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+            visitCount++;
+            localStorage.setItem(STORAGE_KEY, visitCount);
+            document.getElementById('localVisits').textContent = visitCount;
+
+            // --- 2. Session-based Page Request Counter ---
+            let requestCount = 0;
+            requestCount++;
+
+            const observer = new PerformanceObserver(function(list) {
+                var entries = list.getEntries();
+                entries.forEach(function() {
+                    requestCount++;
+                    document.getElementById('pageRequests').textContent = requestCount;
+                });
+            });
+
+            try {
+                observer.observe({ entryTypes: ['resource'] });
+            } catch(e) {
+                // PerformanceObserver not supported
+            }
+
+            function updateRequestCount() {
+                document.getElementById('pageRequests').textContent = requestCount;
+            }
+
+            const originalFetch = window.fetch;
+            window.fetch = function() {
+                requestCount++;
+                updateRequestCount();
+                return originalFetch.apply(this, arguments);
+            };
+
+            const originalXHROpen = XMLHttpRequest.prototype.open;
+            XMLHttpRequest.prototype.open = function() {
+                requestCount++;
+                updateRequestCount();
+                return originalXHROpen.apply(this, arguments);
+            };
+
+            updateRequestCount();
+
+            // --- 3. Total Page Views ---
+            function updateTotalViews() {
+                var totalViewsEl = document.getElementById('totalViews');
+                var localTotalKey = 'ufc328_global_views';
+                var globalViews = parseInt(localStorage.getItem(localTotalKey)) || 0;
+                if (!sessionStorage.getItem('ufc328_view_recorded')) {
+                    globalViews++;
+                    localStorage.setItem(localTotalKey, globalViews);
+                    sessionStorage.setItem('ufc328_view_recorded', 'true');
+                }
+                totalViewsEl.textContent = globalViews.toLocaleString();
+            }
+
+            updateTotalViews();
+
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    requestCount++;
+                    updateRequestCount();
+                }
+            });
+
+            console.log('📊 UFC 328 Page Statistics initialized');
+
+            // ============================================
+            // Countdown Timer
+            // ============================================
+
+            function updateCountdown() {
+                const eventDate = new Date('May 9, 2026 21:00:00 ET').getTime();
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+
+                if (distance < 0) {
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+        })();
+    </script>
+</body>
+</html>
