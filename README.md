@@ -1,12 +1,12 @@
-# thinkcard.com Static Pages
+# 生活杂趣 | Life Bits
 
-This repository contains static web page projects.
+This repository contains my creative web projects and experiments.
 
 ## Projects
 
 ### Home Page
 - File: `index.html`
-- Project navigation hub linking to all sub-projects
+- Project navigation hub (生活杂趣 / Life Bits)
 - Features glassmorphism design, animated backgrounds, and interactive effects
 
 ### Mothers Day
