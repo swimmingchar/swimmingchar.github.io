@@ -366,6 +366,64 @@
             color: #f093fb;
         }
 
+        /* Statistics Section */
+        .stats-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            width: 100%;
+            animation: fadeInUp 1s ease-out 1.2s both;
+        }
+
+        .stats-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px;
+            min-width: 160px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--gradient-start);
+        }
+
         /* AdSense Section */
         .ads-section {
             margin-top: 3rem;
@@ -490,6 +548,25 @@
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="stats-section">
+            <h3 class="stats-title">Page Statistics</h3>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-label">Your Visits</div>
+                    <div class="stat-value" id="localVisits">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Views</div>
+                    <div class="stat-value" id="totalViews">—</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Page Requests</div>
+                    <div class="stat-value" id="pageRequests">0</div>
+                </div>
+            </div>
         </section>
 
         <footer class="footer">
@@ -686,6 +763,79 @@
         });
 
         console.log('✨ Home page loaded with effects');
+
+        // ============================================
+        // Request Statistics Module
+        // ============================================
+
+        // --- 1. Local Storage Visit Counter ---
+        const STORAGE_KEY = 'lifebits_visit_count';
+        let visitCount = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+        visitCount++;
+        localStorage.setItem(STORAGE_KEY, visitCount);
+        document.getElementById('localVisits').textContent = visitCount;
+
+        // --- 2. Session-based Page Request Counter ---
+        let requestCount = 0;
+        requestCount++;
+
+        const perfObserver = new PerformanceObserver(function(list) {
+            var entries = list.getEntries();
+            entries.forEach(function() {
+                requestCount++;
+                document.getElementById('pageRequests').textContent = requestCount;
+            });
+        });
+
+        try {
+            perfObserver.observe({ entryTypes: ['resource'] });
+        } catch(e) {
+            // PerformanceObserver not supported
+        }
+
+        function updateRequestCount() {
+            document.getElementById('pageRequests').textContent = requestCount;
+        }
+
+        const originalFetch = window.fetch;
+        window.fetch = function() {
+            requestCount++;
+            updateRequestCount();
+            return originalFetch.apply(this, arguments);
+        };
+
+        const originalXHROpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function() {
+            requestCount++;
+            updateRequestCount();
+            return originalXHROpen.apply(this, arguments);
+        };
+
+        updateRequestCount();
+
+        // --- 3. Total Page Views ---
+        function updateTotalViews() {
+            var totalViewsEl = document.getElementById('totalViews');
+            var localTotalKey = 'lifebits_global_views';
+            var globalViews = parseInt(localStorage.getItem(localTotalKey)) || 0;
+            if (!sessionStorage.getItem('lifebits_view_recorded')) {
+                globalViews++;
+                localStorage.setItem(localTotalKey, globalViews);
+                sessionStorage.setItem('lifebits_view_recorded', 'true');
+            }
+            totalViewsEl.textContent = globalViews.toLocaleString();
+        }
+
+        updateTotalViews();
+
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                requestCount++;
+                updateRequestCount();
+            }
+        });
+
+        console.log('📊 Life Bits Page Statistics initialized');
     </script>
 </body>
 </html>
