@@ -4,10 +4,15 @@ This repository contains static web page projects.
 
 ## Projects
 
+### Home Page
+- File: `index.html`
+- Project navigation hub linking to all sub-projects
+- Features glassmorphism design, animated backgrounds, and interactive effects
+
 ### Mothers Day
 - Directory: `mothers-day/`
-- A special page for Mother's Day
+- A special page for Mother's Day with gift ideas, videos, and tributes
 
 ### UFC 328
 - Directory: `ufc-328/`
-- UFC 328 event page
+- UFC 328 event page with fight card, countdown, and video highlights
