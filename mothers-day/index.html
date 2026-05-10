@@ -1045,6 +1045,57 @@
         });
 
         console.log('🎀 Holiday effects initialized');
+
+        // ============================================
+        // Click Effect - Plum Blossom Burst
+        // ============================================
+        const plumBlossoms = ['🌸', '✨', '💮', '❀', '✿'];
+
+        document.addEventListener('click', (e) => {
+            // Create multiple plum blossoms that burst outward
+            for (let i = 0; i < 5; i++) {
+                const blossom = document.createElement('div');
+                blossom.textContent = plumBlossoms[Math.floor(Math.random() * plumBlossoms.length)];
+                blossom.style.cssText = `
+                    position: fixed;
+                    left: ${e.clientX}px;
+                    top: ${e.clientY}px;
+                    font-size: 2rem;
+                    pointer-events: none;
+                    z-index: 10000;
+                    transform: translate(-50%, -50%);
+                    animation: blossomBurst 1s ease-out forwards;
+                    --tx: ${(Math.random() - 0.5) * 150}px;
+                    --ty: ${(Math.random() - 0.5) * 150}px;
+                `;
+                document.body.appendChild(blossom);
+
+                setTimeout(() => blossom.remove(), 1000);
+            }
+
+            // Add CSS animation dynamically
+            if (!document.getElementById('blossom-style')) {
+                const style = document.createElement('style');
+                style.id = 'blossom-style';
+                style.textContent = `
+                    @keyframes blossomBurst {
+                        0% {
+                            opacity: 1;
+                            transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+                        }
+                        50% {
+                            opacity: 1;
+                            transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.5) rotate(180deg);
+                        }
+                        100% {
+                            opacity: 0;
+                            transform: translate(calc(-50% + var(--tx) * 1.5), calc(-50% + var(--ty) * 1.5)) scale(0.2) rotate(360deg);
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        });
     </script>
 </body>
 </html>
