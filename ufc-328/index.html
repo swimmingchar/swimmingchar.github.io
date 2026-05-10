@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UFC 328: Chimaev vs Strickland | Live Event Info</title>
-    <meta name="description" content="UFC 328: Chimaev vs Strickland - Watch the Middleweight Championship bout live from Prudential Center, Newark. May 9, 2026.">
+    <meta name="description" content="UFC 328: Chimaev vs Strickland - Watch the Middleweight Championship bout live from Prudential Center, Newark. May 9, 2027.">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3046849698772801"
      crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -632,6 +632,23 @@
             color: var(--ufc-text-secondary);
         }
 
+        /* Venue Info (merged with schedule) */
+        .venue-info {
+            margin-bottom: 2rem;
+        }
+
+        .venue-info .venue-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .venue-info .venue-address {
+            color: var(--ufc-text-secondary);
+            font-size: 1rem;
+        }
+
         /* Location */
         .location-section {
             background: var(--ufc-dark);
@@ -885,7 +902,7 @@
                     <div class="event-details">
                         <div class="detail-item">
                             <span class="detail-label">Date</span>
-                            <span class="detail-value">May 9, 2026</span>
+                            <span class="detail-value">May 9, 2027</span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Location</span>
@@ -912,7 +929,7 @@
                 <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
             </section>
 
-            <!-- Slide 2: Countdown Section -->
+            <!-- Slide 2: Countdown & Watch Section (Merged) -->
             <section class="fullpage-slide countdown-section">
                 <h2 class="section-title">Event Starts In</h2>
                 <div class="countdown-container">
@@ -931,6 +948,29 @@
                     <div class="countdown-item">
                         <div class="countdown-number" id="seconds">00</div>
                         <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <h3 class="section-title" style="font-size: 1.5rem;">Where to Watch UFC 328</h3>
+                    <div class="platforms-container">
+                        <div class="platform-card">
+                            <div class="platform-name">Paramount+</div>
+                            <div class="platform-detail">Official US Broadcast Partner</div>
+                            <div class="platform-price">Subscription Required</div>
+                            <a href="https://www.paramountplus.com" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Watch Now</a>
+                        </div>
+                        <div class="platform-card">
+                            <div class="platform-name">ESPN+ PPV</div>
+                            <div class="platform-detail">Main Card & Prelims</div>
+                            <div class="platform-price">Buy on ESPN+</div>
+                            <a href="https://www.espn.com/plus" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Purchase</a>
+                        </div>
+                        <div class="platform-card">
+                            <div class="platform-name">UFC FIGHT PASS</div>
+                            <div class="platform-detail">Full Event & Replays</div>
+                            <div class="platform-price">$9.99/month</div>
+                            <a href="https://ufcfightpass.com" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Start Free Trial</a>
+                        </div>
                     </div>
                 </div>
                 <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
@@ -1048,35 +1088,13 @@
                 <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
             </section>
 
-            <!-- Slide 4: Watch Section -->
-            <section class="fullpage-slide watch-section" id="watch">
-                <h2 class="section-title">Where to Watch UFC 328</h2>
-                <div class="platforms-container">
-                    <div class="platform-card">
-                        <div class="platform-name">Paramount+</div>
-                        <div class="platform-detail">Official US Broadcast Partner</div>
-                        <div class="platform-price">Subscription Required</div>
-                        <a href="https://www.paramountplus.com" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Watch Now</a>
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-name">ESPN+ PPV</div>
-                        <div class="platform-detail">Main Card & Prelims</div>
-                        <div class="platform-price">Buy on ESPN+</div>
-                        <a href="https://www.espn.com/plus" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Purchase</a>
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-name">UFC FIGHT PASS</div>
-                        <div class="platform-detail">Full Event & Replays</div>
-                        <div class="platform-price">$9.99/month</div>
-                        <a href="https://ufcfightpass.com" target="_blank" class="btn btn-primary" style="margin-top: 1rem; font-size: 0.85rem;">Start Free Trial</a>
-                    </div>
-                </div>
-                <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
-            </section>
-
-            <!-- Slide 5: Schedule Section -->
+            <!-- Slide 4: Schedule & Location Section (was Watch Section, now merged) -->
             <section class="fullpage-slide schedule-section">
-                <h2 class="section-title">Event Schedule (ET)</h2>
+                <h2 class="section-title">Event Schedule & Location</h2>
+                <div class="venue-info">
+                    <div class="venue-name">Prudential Center</div>
+                    <div class="venue-address">25 Lafayette St, Newark, NJ 07102, USA</div>
+                </div>
                 <div class="schedule-grid">
                     <div class="schedule-card early">
                         <div class="schedule-phase">Early Prelims</div>
@@ -1094,46 +1112,19 @@
                         <div class="schedule-timezone">Eastern Time / 6:00 PM PT</div>
                     </div>
                 </div>
-                <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
-            </section>
-
-            <!-- Slide 6: Location Section -->
-            <section class="fullpage-slide location-section">
-                <h2 class="section-title">Event Location</h2>
-                <div class="venue-name">Prudential Center</div>
-                <div class="venue-address">25 Lafayette St, Newark, NJ 07102, USA</div>
-                <div class="venue-map">
+                <div class="venue-map" style="max-width: 600px; margin: 2rem auto 0;">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.5!2d-74.1724!3d40.7357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzA2LjIiTiA3NMKwMTAnMTkuMiJX!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
                         allowfullscreen=""
                         loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
+                        referrerpolicy="no-referrer-when-downgrade"
+                        style="width: 100%; height: 250px; border: none; border-radius: 12px;">
                     </iframe>
                 </div>
                 <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
             </section>
 
-            <!-- Slide 7: Footer -->
-            <section class="fullpage-slide footer">
-                <p class="footer-text">UFC 328: Chimaev vs Strickland - May 9, 2026 | Prudential Center, Newark, NJ</p>
-                <div class="social-links">
-                    <a href="https://www.ufc.com" target="_blank" class="social-link" title="UFC.com">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                    </a>
-                    <a href="https://twitter.com/ufc" target="_blank" class="social-link" title="Twitter/X">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/ufc" target="_blank" class="social-link" title="Instagram">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    </a>
-                    <a href="https://www.youtube.com/ufc" target="_blank" class="social-link" title="YouTube">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
-                </div>
-                <div class="scroll-indicator" onclick="fullpage.next()">&#x25BC;</div>
-            </section>
-
-            <!-- Slide 8: Stats Section -->
+            <!-- Slide 7: Stats Section (Merged with Footer) -->
             <section class="fullpage-slide stats-section">
                 <h2 class="section-title">Page Statistics</h2>
                 <div class="stats-container">
@@ -1154,6 +1145,23 @@
                         <div class="stat-label">Page Requests</div>
                         <div class="stat-value" id="pageRequests">0</div>
                         <div class="stat-detail">Requests loaded this session</div>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <p class="footer-text">UFC 328: Chimaev vs Strickland - May 9, 2027 | Prudential Center, Newark, NJ</p>
+                    <div class="social-links">
+                        <a href="https://www.ufc.com" target="_blank" class="social-link" title="UFC.com">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        </a>
+                        <a href="https://twitter.com/ufc" target="_blank" class="social-link" title="Twitter/X">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/ufc" target="_blank" class="social-link" title="Instagram">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/ufc" target="_blank" class="social-link" title="YouTube">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -1370,7 +1378,9 @@
             // ============================================
 
             function updateCountdown() {
-                const eventDate = new Date('May 9, 2026 21:00:00 ET').getTime();
+                // ET (Eastern Time) is UTC-4 during EDT (Daylight Saving) or UTC-5 during EST
+                // May 9, 2026 uses Eastern Daylight Time (EDT, UTC-4)
+                const eventDate = new Date('2027-05-09T21:00:00-04:00').getTime();
                 const now = new Date().getTime();
                 const distance = eventDate - now;
 
