@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Mother's Day 2026</title>
+    <meta name="description" content="Mother's Day gifts, heartwarming videos, and beautiful messages to celebrate the amazing mothers in our lives.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink-deep: #B76E79;
+            --pink-rose: #E8A0AE;
+            --pink-light: #FADDE1;
+            --pink-blush: #FFF0F3;
+            --gold: #D4A574;
+            --gold-light: #F5E6D3;
+            --dark: #2D2D2D;
+            --dark-soft: #3D3D3D;
+            --text-dark: #4A4A4A;
+            --text-light: #F8F8F8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--pink-blush) 0%, #fff 50%, var(--pink-blush) 100%);
+            color: var(--text-dark);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--pink-deep) 0%, var(--pink-rose) 50%, var(--pink-light) 100%);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(5%, 5%); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: var(--text-light);
+            text-shadow: 2px 4px 20px rgba(0,0,0,0.15);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .hero .date {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-dot {
+            width: 16px;
+            height: 16px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+            position: relative;
+        }
+
+        .nav-dot::before {
+            content: '❤';
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot:hover::before, .nav-dot.active::before {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.3);
+        }
+
+        /* Floating Elements */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.6;
+            animation: floatUp 8s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sparkle Effect */
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0;
+            animation: sparkleAnim 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkleAnim {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Heart Beat Animation */
+        .heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
+        }
+
+        /* Text Glow */
+        .glow-text {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 2px 4px 20px rgba(0,0,0,0.15);
+            }
+            50% {
+                text-shadow: 2px 4px 30px rgba(255,255,255,0.5), 0 0 40px rgba(255,200,200,0.3);
+            }
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--pink-deep);
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pink-rose), var(--gold));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--text-dark);
+            opacity: 0.8;
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        /* Gift Cards */
+        .gifts-section {
+            background: linear-gradient(180deg, #fff 0%, var(--pink-blush) 100%);
+        }
+
+        .gift-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .gift-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(183, 110, 121, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+        }
+
+        .gift-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(183, 110, 121, 0.2);
+        }
+
+        .gift-card .icon {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .gift-card:nth-child(1) .icon { background: linear-gradient(135deg, #FFE4E1, #FFF0F5); }
+        .gift-card:nth-child(2) .icon { background: linear-gradient(135deg, #E6E6FA, #F0F8FF); }
+        .gift-card:nth-child(3) .icon { background: linear-gradient(135deg, #F0FFF0, #F5FFFA); }
+        .gift-card:nth-child(4) .icon { background: linear-gradient(135deg, #FFF8DC, #FFFAF0); }
+
+        .gift-card .content {
+            padding: 1.5rem;
+        }
+
+        .gift-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--pink-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .gift-card p {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        .gift-card .price {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .gift-card .btn {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        .btn-amazon {
+            background: linear-gradient(135deg, #FF9900, #FFB340);
+            color: white;
+        }
+
+        .btn-tmall {
+            background: linear-gradient(135deg, #FF5000, #FF6A33);
+            color: white;
+        }
+
+        .gift-card .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Videos */
+        .videos-section {
+            background: linear-gradient(180deg, var(--pink-blush) 0%, #fff 50%, var(--pink-blush) 100%);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(183, 110, 121, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(183, 110, 121, 0.15);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 180px;
+            background: linear-gradient(135deg, var(--pink-rose), var(--pink-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-thumbnail .play-btn {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover .play-btn {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .video-thumbnail .play-btn::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid var(--pink-deep);
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+
+        .video-card .content {
+            padding: 1.5rem;
+        }
+
+        .video-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--pink-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-card p {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            opacity: 0.7;
+        }
+
+        .video-card .btn-youtube {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.5rem;
+            background: #FF0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .video-card .btn-youtube:hover {
+            background: #CC0000;
+            transform: scale(1.05);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: linear-gradient(135deg, var(--pink-deep) 0%, var(--pink-rose) 100%);
+            color: var(--text-light);
+        }
+
+        .info-section .section-title {
+            color: var(--text-light);
+        }
+
+        .info-section .section-title::after {
+            background: rgba(255,255,255,0.5);
+        }
+
+        .info-section .section-desc {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .info-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            background: linear-gradient(180deg, var(--pink-blush) 0%, #fff 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(183, 110, 121, 0.1);
+            width: 100%;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            min-width: 260px;
+            flex: 1;
+            max-width: 300px;
+            border: 1px solid rgba(183, 110, 121, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(183, 110, 121, 0.08);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pink-rose), var(--gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-card:hover {
+            border-color: var(--pink-deep);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(183, 110, 121, 0.15);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            opacity: 0.7;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--pink-deep);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover .stat-value {
+            color: var(--gold);
+        }
+
+        .stat-detail {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            opacity: 0.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer .heart {
+            color: var(--pink-rose);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .footer .love {
+            margin-top: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-dots {
+                right: 10px;
+            }
+
+            .nav-dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat-card {
+                min-width: auto;
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Dots -->
+    <nav class="nav-dots">
+        <button class="nav-dot active" data-section="0" aria-label="Home"></button>
+        <button class="nav-dot" data-section="1" aria-label="Gifts"></button>
+        <button class="nav-dot" data-section="2" aria-label="Videos"></button>
+        <button class="nav-dot" data-section="3" aria-label="About"></button>
+        <button class="nav-dot" data-section="4" aria-label="Statistics"></button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="section-0">
+        <div class="floating-hearts" id="floatingHearts"></div>
+        <div class="hero-content">
+            <h1 class="glow-text">Happy Mother's Day</h1>
+            <p class="subtitle heartbeat">Celebrating the most wonderful mother in the world</p>
+            <span class="date">Second Sunday of May · May 10, 2026</span>
+        </div>
+        <div class="scroll-hint">Scroll down to explore</div>
+    </section>
+
+    <!-- Gift Section -->
+    <section class="section gifts-section" id="section-1">
+        <h2 class="section-title">Gift Ideas</h2>
+        <p class="section-desc">Find the perfect gift to show Mom how much she means to you</p>
+
+        <div class="gift-grid">
+            <div class="gift-card">
+                <div class="icon">🌸</div>
+                <div class="content">
+                    <h3>Flowers & Bouquets</h3>
+                    <p>Carnations, roses, lilies and more, or forever-lasting preserved flowers</p>
+                    <span class="price">$15 - $90</span>
+                    <br>
+                    <a href="https://www.amazon.com/s?k=mother%27s+day+flowers" class="btn btn-amazon" target="_blank" rel="noopener">Shop on Amazon</a>
+                    <a href="https://s.tmall.com/search?q=%E6%AF%8D%E4%BA%B2%E8%8A%82%E7%8C%9D%E8%8A%B1" class="btn btn-tmall" target="_blank" rel="noopener">Shop on Tmall</a>
+                </div>
+            </div>
+
+            <div class="gift-card">
+                <div class="icon">💎</div>
+                <div class="content">
+                    <h3>Jewelry & Accessories</h3>
+                    <p>Pearl necklaces, gold and silver jewelry, jade and gemstone pieces</p>
+                    <span class="price">$45 - $1500</span>
+                    <br>
+                    <a href="https://www.amazon.com/s?k=mother%27s+day+jewelry" class="btn btn-amazon" target="_blank" rel="noopener">Shop on Amazon</a>
+                    <a href="https://s.tmall.com/search?q=%E6%AF%8D%E4%BA%B2%E8%8A%82%E9%A6%86%E9%92%BB" class="btn btn-tmall" target="_blank" rel="noopener">Shop on Tmall</a>
+                </div>
+            </div>
+
+            <div class="gift-card">
+                <div class="icon">🧴</div>
+                <div class="content">
+                    <h3>Skincare & Beauty</h3>
+                    <p>Anti-aging creams, serums, perfumes and luxury skincare sets</p>
+                    <span class="price">$30 - $300</span>
+                    <br>
+                    <a href="https://www.amazon.com/s?k=mother%27s+day+skincare" class="btn btn-amazon" target="_blank" rel="noopener">Shop on Amazon</a>
+                    <a href="https://s.tmall.com/search?q=%E6%AF%8D%E4%BA%B2%E8%8A%82%E6%8A%A4%E8%82%A4%E5%A5%97%E9%A5%B0" class="btn btn-tmall" target="_blank" rel="noopener">Shop on Tmall</a>
+                </div>
+            </div>
+
+            <div class="gift-card">
+                <div class="icon">👜</div>
+                <div class="content">
+                    <h3>Bags & Accessories</h3>
+                    <p>Fashion handbags, wallets, and premium leather goods</p>
+                    <span class="price">$45 - $900</span>
+                    <br>
+                    <a href="https://www.amazon.com/s?k=mother%27s+day+handbag" class="btn btn-amazon" target="_blank" rel="noopener">Shop on Amazon</a>
+                    <a href="https://s.tmall.com/search?q=%E6%AF%8D%E4%BA%B2%E8%8A%82%E5%8C%85%E5%8C%85" class="btn btn-tmall" target="_blank" rel="noopener">Shop on Tmall</a>
+                </div>
+            </div>
+
+            <div class="gift-card">
+                <div class="icon">🍫</div>
+                <div class="content">
+                    <h3>Chocolates & Sweets</h3>
+                    <p>Premium chocolate boxes, gourmet truffles, and sweet treats</p>
+                    <span class="price">$20 - $150</span>
+                    <br>
+                    <a href="https://www.amazon.com/s?k=mother%27s+day+chocolate" class="btn btn-amazon" target="_blank" rel="noopener">Shop on Amazon</a>
+                    <a href="https://s.tmall.com/search?q=%E6%AF%8D%E4%BA%B2%E8%8A%82%E5%9D%90%E5%8F%AF" class="btn btn-tmall" target="_blank" rel="noopener">Shop on Tmall</a>
+                </div>
+            </div>
+
+            <div class="gift-card">
+                <div class="icon">🧶</div>
+                <div class="content">
+                    <h3>Spa & Wellness</h3>
+                    <p>Relaxing spa gift sets, massage tools, and wellness packages</p>
+                    <span class="price">$35 - $500</span>
+                    <br>
+                    <a href="https://www.amazon.com/s?k=mother%27s+day+spa+gift" class="btn btn-amazon" target="_blank" rel="noopener">Shop on Amazon</a>
+                    <a href="https://s.tmall.com/search?q=%E6%AF%8D%E4%BA%B2%E8%8A%82Spa%E7%A4%BC%E5%93%81" class="btn btn-tmall" target="_blank" rel="noopener">Shop on Tmall</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="section videos-section" id="section-2">
+        <h2 class="section-title">Heartwarming Videos</h2>
+        <p class="section-desc">Touching stories and songs about a mother's love</p>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <div class="play-btn"></div>
+                </div>
+                <div class="content">
+                    <h3>Mother's Day Tributes</h3>
+                    <p>Heartfelt stories celebrating the bond between mother and child</p>
+                    <a href="https://www.youtube.com/results?search_query=%E6%AF%8D%E4%BA%B2%E8%8A%82" class="btn-youtube" target="_blank" rel="noopener">
+                        Watch on YouTube
+                    </a>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <div class="play-btn"></div>
+                </div>
+                <div class="content">
+                    <h3>Classic Mother Songs</h3>
+                    <p>Timeless songs like "Candle in the Wind" and beautiful tributes</p>
+                    <a href="https://www.youtube.com/results?search_query=mother%27s+day+songs" class="btn-youtube" target="_blank" rel="noopener">
+                        Watch on YouTube
+                    </a>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <div class="play-btn"></div>
+                </div>
+                <div class="content">
+                    <h3>DIY Craft Tutorials</h3>
+                    <p>Handmade cards, gift wrapping and craft ideas for Mom</p>
+                    <a href="https://www.youtube.com/results?search_query=mother%27s+day+diy+craft" class="btn-youtube" target="_blank" rel="noopener">
+                        Watch on YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="section info-section" id="section-3">
+        <h2 class="section-title">About Mother's Day</h2>
+        <p class="section-desc">Learn more about this special day dedicated to honoring mothers everywhere</p>
+
+        <div class="info-cards">
+            <div class="info-card">
+                <div class="emoji">📅</div>
+                <h3>The Origin</h3>
+                <p>Mother's Day traces back to ancient Greek festivals honoring maternal goddesses. The modern holiday was pioneered by Anna Jarvis, becoming an official U.S. holiday in 1914.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="emoji">🌷</div>
+                <h3>The Carnation</h3>
+                <p>The carnation is the official flower of Mother's Day. Red carnations represent a living mother's love, while white ones honor mothers who have passed away.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="emoji">💝</div>
+                <h3>Ways to Celebrate</h3>
+                <p>A bouquet, a warm hug, a home-cooked meal, or simply saying "I love you, Mom" — love doesn't need to be expensive, just heartfelt.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section" id="section-4">
+        <h2 class="section-title">Page Statistics</h2>
+        <p class="section-desc">Track your visits and see how this page is being enjoyed</p>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon">👁️</div>
+                <div class="stat-label">Your Visits</div>
+                <div class="stat-value" id="localVisits">0</div>
+                <div class="stat-detail">Times you've viewed this page</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🌐</div>
+                <div class="stat-label">Total Page Views</div>
+                <div class="stat-value" id="totalViews">—</div>
+                <div class="stat-detail">Global visitor count</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-label">Page Requests</div>
+                <div class="stat-value" id="pageRequests">0</div>
+                <div class="stat-detail">Requests loaded this session</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="heart">❤</div>
+        <p>Wishing all mothers around the world happiness and health!</p>
+        <p class="love">Mom, you are the best! I love you!</p>
+    </footer>
+
+    <script>
+        // Navigation dots interaction
+        const sections = document.querySelectorAll('.section, .hero, .stats-section');
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        // Click navigation
+        navDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const sectionIndex = dot.dataset.section;
+                sections[sectionIndex].scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Scroll spy
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(sections).indexOf(entry.target);
+                    navDots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // ============================================
+        // Request Statistics Module
+        // ============================================
+
+        // --- 1. Local Storage Visit Counter ---
+        const STORAGE_KEY = 'mothersday_visit_count';
+        let visitCount = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+        visitCount++;
+        localStorage.setItem(STORAGE_KEY, visitCount);
+        document.getElementById('localVisits').textContent = visitCount;
+
+        // --- 2. Session-based Page Request Counter ---
+        let requestCount = 0;
+        requestCount++;
+
+        const perfObserver = new PerformanceObserver(function(list) {
+            var entries = list.getEntries();
+            entries.forEach(function() {
+                requestCount++;
+                document.getElementById('pageRequests').textContent = requestCount;
+            });
+        });
+
+        try {
+            perfObserver.observe({ entryTypes: ['resource'] });
+        } catch(e) {
+            // PerformanceObserver not supported
+        }
+
+        function updateRequestCount() {
+            document.getElementById('pageRequests').textContent = requestCount;
+        }
+
+        const originalFetch = window.fetch;
+        window.fetch = function() {
+            requestCount++;
+            updateRequestCount();
+            return originalFetch.apply(this, arguments);
+        };
+
+        const originalXHROpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function() {
+            requestCount++;
+            updateRequestCount();
+            return originalXHROpen.apply(this, arguments);
+        };
+
+        updateRequestCount();
+
+        // --- 3. Total Page Views ---
+        function updateTotalViews() {
+            var totalViewsEl = document.getElementById('totalViews');
+            var localTotalKey = 'mothersday_global_views';
+            var globalViews = parseInt(localStorage.getItem(localTotalKey)) || 0;
+            if (!sessionStorage.getItem('mothersday_view_recorded')) {
+                globalViews++;
+                localStorage.setItem(localTotalKey, globalViews);
+                sessionStorage.setItem('mothersday_view_recorded', 'true');
+            }
+            totalViewsEl.textContent = globalViews.toLocaleString();
+        }
+
+        updateTotalViews();
+
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                requestCount++;
+                updateRequestCount();
+            }
+        });
+
+        console.log('📊 Mother\'s Day Page Statistics initialized');
+
+        // ============================================
+        // Holiday Effects - Floating Hearts
+        // ============================================
+        const floatingHeartsContainer = document.getElementById('floatingHearts');
+        const heartSymbols = ['❤', '💕', '🌸', '✨', '💗', '💖', '🌷', '💐'];
+
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            floatingHeartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 12000);
+        }
+
+        // Create initial hearts
+        for (let i = 0; i < 11; i++) {
+            setTimeout(createFloatingHeart, i * 400);
+        }
+
+        // Continue creating hearts
+        setInterval(createFloatingHeart, 1000);
+
+        // Create sparkle effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.94) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.position = 'fixed';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '9999';
+                document.body.appendChild(sparkle);
+
+                setTimeout(() => sparkle.remove(), 2000);
+            }
+        });
+
+        // Hero section mouse parallax effect
+        const hero = document.querySelector('.hero');
+        const heroContent = document.querySelector('.hero-content');
+
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+            const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+
+            heroContent.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            heroContent.style.transform = 'translate(0, 0)';
+            heroContent.style.transition = 'transform 0.5s ease';
+        });
+
+        hero.addEventListener('mouseenter', () => {
+            heroContent.style.transition = 'none';
+        });
+
+        console.log('🎀 Holiday effects initialized');
+    </script>
+</body>
+</html>
